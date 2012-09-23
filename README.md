@@ -11,7 +11,7 @@ _SSH/Terminal access is required_
 
 [LookingGlass](http://lg.iamtelephone.com)
 
-The demo is currently hosted on a 50MB VPS, so 502 errors may occur in events of high use.
+The demo is currently hosted on a 50MB VPS. 502 errors may occur in events of high use.
 
 ## Implemented commands
 
