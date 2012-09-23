@@ -7,13 +7,13 @@ commands on behalf of your server. It also features live output (long polling) o
 
 _SSH/Terminal access is required_
 
-### Demo
+## Demo
 
 [LookingGlass](http://lg.iamtelephone.com)
 
 The demo is currently hosted on a 50MB VPS, so 502 errors may occur in events of high use.
 
-### Implemented commands
+## Implemented commands
 
 * host
 * mtr
@@ -25,7 +25,7 @@ The demo is currently hosted on a 50MB VPS, so 502 errors may occur in events of
 
 _IPv6 commands will only work if your server has external IPv6 setup (or tunneled)_
 
-### Install
+## Install
 
 1. Download LookingGlass to the intended folder within your web directory
 2. Navigate to the `LookingGlass` subdirectory in terminal
@@ -34,7 +34,7 @@ _IPv6 commands will only work if your server has external IPv6 setup (or tunnele
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
-### Nginx
+## Nginx
 
 To enable output buffering on Nginx, please append the following to your PHP configuration:
 
@@ -53,12 +53,12 @@ location ~ \.php$ {
 I recommend that you create a separate host file for LookingGlass OR a directory specific PHP "location". This is due 
 to the these settings not being optimal for conventional use.
 
-### To-do
+## To-do
 
 * Implement abuse protection
 * Create a non-JS reliant page (index2.php)
 
-### Quirks
+## Quirks
 
 * Hostnames with only IPv4 will pass validation for IPv6 (it will just display as an empty result)
 * All test files are destroyed/recreated while running `configure.sh`
