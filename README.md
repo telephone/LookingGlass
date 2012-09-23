@@ -60,7 +60,8 @@ to the these settings not being optimal for conventional use.
 
 ## Quirks
 
-* Hostnames with only IPv4 will pass validation for IPv6 (it will just display as an empty result)
+* If you use IPv6, your IPv6 address must be entered everytime `configure.sh` is run
+* Hostnames with only IPv4 will pass validation for IPv6 (it will display as an empty result)
 * All test files are destroyed/recreated while running `configure.sh`
 * Safari renders the select dropdown without an arrow
 
