@@ -51,7 +51,7 @@ location ~ \.php$ {
 ```
 
 I recommend that you create a separate host file for LookingGlass OR a directory specific PHP "location". This is due 
-to the these settings not being optimal for conventional use.
+to these settings not being optimal for conventional use.
 
 ## To-do
 
