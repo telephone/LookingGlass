@@ -67,7 +67,11 @@ function requirements()
     if [ $i = 'host' ]; then
       echo 'Checking for host...'
       if [ ! -f "/usr/bin/$i" ]; then
-        ${INSTALL} -y install "bind-utils"
+        if [ $INSTALL = 'yum' ]; then
+          ${INSTALL} -y install "bind-utils"
+        else
+          ${INSTALL} -y install ${i}
+        fi
         echo ''
       fi
     fi
