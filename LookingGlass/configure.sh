@@ -63,7 +63,16 @@ function requirements()
 
   # Loop through required & install
   for i in "${REQUIRE[@]}"; do
-    if [ $i = 'iputils-ping' ]; then
+    # Fix host for CentOS
+    if [ $i = 'host' ]; then
+      echo 'Checking for host...'
+      if [ ! -f "/usr/bin/$i" ]; then
+        ${INSTALL} -y install "bind-utils"
+        echo ''
+      fi
+    fi
+    # Fix ping
+    elif [ $i = 'iputils-ping' ]; then
       echo 'Checking for ping...'
       if [ ! -f "/bin/ping" ]; then
         ${INSTALL} -y install ${i}
