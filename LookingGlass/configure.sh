@@ -47,12 +47,12 @@ function requirements()
   if [ -f /usr/bin/apt-get ]; then
     # Check for root
     if [ $(id -u) != "0" ]; then
-      local INSTALL='sudo apt-get'
+      INSTALL='sudo apt-get'
     else
-      local INSTALL='apt-get'
+      INSTALL='apt-get'
     fi
   elif [ -f /usr/bin/yum ]; then
-    local INSTALL='yum'
+    INSTALL='yum'
   else
     echo 'Skipping script requirements.'
     return
@@ -275,6 +275,28 @@ function testFiles()
   fi
 }
 
+##
+# Fix MTR on REHL based OS
+##
+function mtrFix()
+{
+  # Check permissions for MTR & Symbolic link
+  if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
+    if [ $(id -u) = "0" ]; then
+      echo 'Fixing MTR permissions...'
+      chmod 4755 /usr/sbin/mtr
+      ln -s /usr/sbin/mtr /usr/bin/mtr
+    else
+      echo '##### IMPORTANT #####'
+      echo 'You are not root. Please log into root and run:'
+      echo 'chmod 4755 /usr/sbin/mtr'
+      echo 'and'
+      echo 'ln -s /usr/sbin/mtr /usr/bin/mtr'
+      echo '#####################'
+    fi
+  fi
+}
+
 ###########################
 ##                       ##
 ##     Configuration     ##
@@ -359,9 +381,8 @@ Installation is complete...
 
 EOF
 
-
-# Check that components are installed (YES)
-# Set IPv4 & IPv6 address' (NO)
-# Create test files (YES)
-# Store results into Config.php & chmod
-# Ipv4 & IPv6 versions of the test files
+# Check for RHEL mtr
+if [ "$INSTALL" = 'yum' ]; then
+  mtrFix
+  echo ''
+fi
