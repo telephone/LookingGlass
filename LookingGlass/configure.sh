@@ -202,7 +202,7 @@ function setup()
   read -p "Enter your website name (Header/Logo) [${SITE}]: " S
   read -p "Enter the servers location [${LOCATION}]: " LOC
   read -p "Enter the test IPv4 address [${IPV4}]: " IP4
-  read -p "Enter the test IPv6 address (must re-enter everytime) [${IPV6}]: " IP6
+  read -p "Enter the test IPv6 address (Re-enter everytime this script is run) [${IPV6}]: " IP6
   read -p "Enter the size of test files in MB (Example: 25MB 50MB 100MB) [${TEST[*]}]: " T
 
   # Check local vars aren't empty; Set new values
