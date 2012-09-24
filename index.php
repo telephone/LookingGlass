@@ -59,7 +59,7 @@ include 'LookingGlass/Config.php';
       <!-- Header -->
       <header class="header nohighlight" id="overview">
         <div class="row">
-          <div class="span6">
+          <div class="span12">
             <h1><a id="title" href="<?php echo $_SERVER['REQUEST_URI']; ?>"><?php echo $siteName; ?></a></h1>
           </div>
         </div>
