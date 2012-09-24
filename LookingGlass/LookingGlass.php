@@ -28,7 +28,7 @@
  * @author      Nick Adams <nick89@zoho.com>
  * @copyright   2012 Nick Adams.
  * @link        http://iamtelephone.com
- * @version     1.0.0
+ * @version     1.1.0
  */
 namespace Telephone;
 

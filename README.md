@@ -30,7 +30,8 @@ _IPv6 commands will only work if your server has external IPv6 setup (or tunnele
 
 ## Install
 
-1. Download LookingGlass to the intended folder within your web directory
+1. Download [LookingGlass](https://github.com/downloads/telephone/LookingGlass/LookingGlass-1.1.0.zip) to the intended 
+folder within your web directory (and unzip)
 2. Navigate to the `LookingGlass` subdirectory in terminal
 3. Run `bash configure.sh`
 4. Follow the instructions and `configure.sh` will take care of the rest
