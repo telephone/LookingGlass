@@ -74,7 +74,6 @@ function requirements()
         fi
         echo ''
       fi
-    fi
     # Fix ping
     elif [ $i = 'iputils-ping' ]; then
       echo 'Checking for ping...'
