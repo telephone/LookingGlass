@@ -5,8 +5,6 @@
 LookingGlass is a user-friendly PHP based looking glass that allows the public (via a web interface) to execute network 
 commands on behalf of your server. It also features live output (long polling) of the network commands!
 
-_SSH/Terminal access is required_
-
 ## Demo
 
 [LookingGlass](http://lg.iamtelephone.com)
@@ -24,6 +22,11 @@ The demo is currently hosted on a 50MB VPS. 502 errors may occur in events of hi
 * traceroute6 (IPv6)
 
 _IPv6 commands will only work if your server has external IPv6 setup (or tunneled)_
+
+## Requirements
+
+* PHP >= 5.3
+* SSH/Terminal access (able to install commands/functions if non-existent)
 
 ## Install
 

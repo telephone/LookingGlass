@@ -1,4 +1,9 @@
-<?php include 'LookingGlass/Config.php'; ?>
+<?php
+if (!file_exists('LookingGlass/Config.php')) {
+  exit('Config.php does not exist. Please run configure.sh');
+}
+include 'LookingGlass/Config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--
