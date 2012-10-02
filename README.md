@@ -3,13 +3,21 @@
 ## Overview
 
 LookingGlass is a user-friendly PHP based looking glass that allows the public (via a web interface) to execute network 
-commands on behalf of your server. It also features live output (long polling) of the network commands!
+commands on behalf of your server.
 
 ## Demo
 
 [LookingGlass](http://lg.iamtelephone.com)
 
-The demo is currently hosted on a 50MB VPS. 502 errors may occur in events of high use.
+The demo is hosted on a 50MB (RAM) VPS. 502 errors may occur in events of high use.
+
+## Features
+
+* Automated install via bash script
+* IPv4 & IPv6 support
+* Live output via long polling
+* Multiple themes
+* Rate limiting of network commands
 
 ## Implemented commands
 
@@ -21,7 +29,7 @@ The demo is currently hosted on a 50MB VPS. 502 errors may occur in events of hi
 * traceroute
 * traceroute6 (IPv6)
 
-_IPv6 commands will only work if your server has external IPv6 setup (or tunneled)_
+__IPv6 commands will only work if your server has external IPv6 setup (or tunneled)__
 
 ## Requirements
 
@@ -30,7 +38,7 @@ _IPv6 commands will only work if your server has external IPv6 setup (or tunnele
 
 ## Install
 
-1. Download [LookingGlass](https://github.com/downloads/telephone/LookingGlass/LookingGlass-1.1.0.zip) to the intended 
+1. Download [LookingGlass](https://github.com/downloads/telephone/LookingGlass/LookingGlass-1.2.0.zip) to the intended 
 folder within your web directory (and unzip)
 2. Navigate to the `LookingGlass` subdirectory in terminal
 3. Run `bash configure.sh`
@@ -57,20 +65,8 @@ location ~ \.php$ {
 I recommend that you create a separate host file for LookingGlass OR a directory specific PHP "location". This is due 
 to these settings not being optimal for conventional use.
 
-## To-do
-
-* Implement abuse protection
-* Create a non-JS reliant page (index2.php)
-
-## Quirks
-
-* If you use IPv6, your IPv6 address must be entered everytime `configure.sh` is run
-* Hostnames with only IPv4 will pass validation for IPv6 (it will display as an empty result)
-* All test files are destroyed/recreated while running `configure.sh`
-* Safari renders the select dropdown without an arrow
-
 ## License
 
 Code is licensed under MIT Public License.
 
-* Please keep the "Powered by LookingGlass" link intact to promote this script.
+* If you wish to support my efforts, keep the "Powered by LookingGlass" link intact.

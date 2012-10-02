@@ -28,18 +28,27 @@
  * @author      Nick Adams <nick89@zoho.com>
  * @copyright   2012 Nick Adams.
  * @link        http://iamtelephone.com
- * @version     1.1.0
+ * @version     1.2.0
  */
-// instantiate LookingGlass
-require 'LookingGlass/LookingGlass.php';
-$lg = new Telephone\LookingGlass();
-
 // check whether command and host are set
 if (isset($_GET['cmd']) && isset($_GET['host'])) {
     // define available commands
     $cmds = array('host', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
     // verify command
     if (in_array($_GET['cmd'], $cmds)) {
+        // include required scripts
+        $required = array('LookingGlass.php', 'RateLimit.php', 'Config.php');
+        foreach ($required as $val) {
+            require 'LookingGlass/' . $val;
+        }
+
+        // instantiate LookingGlass & RateLimit
+        $lg = new Telephone\LookingGlass();
+        $limit = new Telephone\LookingGlass\RateLimit($rateLimit);
+
+        // check IP against database
+        $limit->rateLimit($rateLimit);
+
         // execute command
         $output = $lg->$_GET['cmd']($_GET['host']);
         if ($output) {

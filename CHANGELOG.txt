@@ -1,0 +1,12 @@
+* 1.2.0 (2012-10-01)
+  * Multiple themes
+  * Rate limiting
+
+* 1.1.0 (2012-09-24)
+  * Added --report-wide to MTR
+  * Fix MTR on RHEL OS'
+
+* 1.0.0 (2012-09-23)
+  * Added network commands
+  * Automated install via bash script
+  * Long polling via output buffering
