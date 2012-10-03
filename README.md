@@ -34,6 +34,7 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 ## Requirements
 
 * PHP >= 5.3
+* PHP PDO
 * SSH/Terminal access (able to install commands/functions if non-existent)
 
 ## Install
