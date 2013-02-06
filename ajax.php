@@ -50,7 +50,14 @@ if (isset($_GET['cmd']) && isset($_GET['host'])) {
         $limit->rateLimit($rateLimit);
 
         // execute command
+        if ($_GET['cmd']=='dig')
+        {
+        $output = $lg->$_GET['cmd']($_GET['host'],$_GET['digparam']);
+        }
+        else
+        {
         $output = $lg->$_GET['cmd']($_GET['host']);
+        }
         if ($output) {
             exit();
         }
