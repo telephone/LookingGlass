@@ -169,7 +169,40 @@ class LookingGlass
         }
         return false;
     }
-
+    
+    /**
+     * Execute 'whois' command against given host
+     * 
+     * @param string @host
+     *     IP/URL to perform command against
+     * 
+     * /
+    public function whois($host)
+    {
+       if ($host = $this->validate($host)) {
+            return $this->procExecute('whois', $host);
+        }
+        return false;
+    }
+   
+   /**
+    * Execute 'dig' command against given host
+    * 
+    * @param string @host
+    *   IP/URL to perform command against
+    * 
+    * @param string @param
+    *   dig flags to run on dig command
+    *  
+    * /
+    public function dig($host,$param)
+    {
+       echo "<script>alert($param);</script>";
+        if ($host = $this->validate($host)) {
+            return $this->procExecute('dig '.$param, $host);
+        }
+        return false;
+    }
     // ==================================================================
     //
     // Internal functions
