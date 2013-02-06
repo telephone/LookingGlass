@@ -28,6 +28,8 @@ The demo is hosted on a 50MB (RAM) VPS. 502 errors may occur in events of high u
 * ping6 (IPv6)
 * traceroute
 * traceroute6 (IPv6)
+* dig
+* whois
 
 __IPv6 commands will only work if your server has external IPv6 setup (or tunneled)__
 
