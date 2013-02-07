@@ -33,7 +33,7 @@
 // check whether command and host are set
 if (isset($_GET['cmd']) && isset($_GET['host'])) {
     // define available commands
-    $cmds = array('host', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
+    $cmds = array('host', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6', 'dig', 'whois');
     // verify command
     if (in_array($_GET['cmd'], $cmds)) {
         // include required scripts
