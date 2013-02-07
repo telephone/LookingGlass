@@ -176,7 +176,7 @@ class LookingGlass
      * @param string @host
      *     IP/URL to perform command against
      * 
-     * /
+     */
     public function whois($host)
     {
        if ($host = $this->validate($host)) {
@@ -194,7 +194,7 @@ class LookingGlass
     * @param string @param
     *   dig flags to run on dig command
     *  
-    * /
+    */
     public function dig($host,$param)
     {
        echo "<script>alert($param);</script>";
