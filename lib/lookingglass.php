@@ -317,11 +317,6 @@ class CLI
         @ob_flush();
         flush();
     }
-
-    private static function shutdown()
-    {
-
-    }
 }
 
 /**
