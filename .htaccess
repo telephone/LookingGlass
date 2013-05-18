@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Deny access to private folders
+RewriteRule /(config|db|lib|setup|template)/ - [F,L,NC]
+
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?location=$1 [L,QSA]
+
+# CSS/JS/IMG/FONT cache policy
+<IfModule mod_headers.c>
+    <FilesMatch "\.(?:css|gif|jpe?g|js|png|eof|otf|ttf|woff)$">
+        Header set Cache-Control "max-age=2592000, public, must-revalidate, proxy-revalidate"
+        Header append Vary: Accept-Encoding
+    </FilesMatch>
+</IfModule>
