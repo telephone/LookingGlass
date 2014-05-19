@@ -35,6 +35,9 @@ require 'LookingGlass/Config.php';
         '._                _.'
            `""--......--""`
 -->
+<!-- Styles -->
+<link href="assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
+
     <!-- Container -->
     <div class="container">
 
