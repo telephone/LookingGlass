@@ -71,6 +71,7 @@ function LookingGlass_menu() {
      'access callback' => TRUE,
   );
 
+  //The call to the ajax function made by Javascript
   $items['lg_ajax'] = array(
     'title' => 'Ajax arguments',
     'description' => 'Javascript will submit commands to lg_ajax_page function',
