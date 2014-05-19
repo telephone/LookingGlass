@@ -23,7 +23,7 @@ $(document).ready(function() {
 
       // call async request
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'ajax.php?' + data, true);
+      xhr.open('GET', 'lg_ajax?' + data, true);
       xhr.send(null);
       var timer;
       timer = window.setInterval(function() {
