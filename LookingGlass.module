@@ -36,7 +36,7 @@ function LookingGlass_menu() {
      'access callback' => TRUE,
   );
 
-  $items['/lg_ajax'] = array(
+  $items['LookingGlass/lg_ajax'] = array(
     'title' => 'Ajax arguments',
     'description' => 'Javascript will submit commands to lg_ajax_page function',
     'page callback' => '_LookingGlass_lg_ajax_page',
@@ -44,7 +44,33 @@ function LookingGlass_menu() {
     'access callback' => FALSE,
   );
   
+
+function _LookingGlass_menu_page($content = NULL, $arg1 = NULL, $arg2 = NULL) {
+
+  drupal_add_js(drupal_get_path('module', 'test7') . '/assets/js/LookingGlass.min.js');
+  drupal_add_js(drupal_get_path('module', 'test7') . '/assets/js/XMLHttpRequest.min.js');
+
+  $title = t('Click sections to expand or collapse:');
+  $build['myelement'] = array(
+    '#theme' => 'my_test7',
+    '#title' => $title,
+  );
+
+  //$output = '<div>' . $content . '</div>';
+
+  //if (!empty($arg1)) {
+  //  $output .= '<div>' . t('Argument 1=%arg', array('%arg' => $arg1)) . '</div>';
+  //}
+  //if (!empty($arg2)) {
+  //  $output .= '<div>' . t('Argument 2=%arg', array('%arg' => $arg2)) . '</div>';
+  //}
+
+  $output = drupal_render($build);<?
+  return $output;
   
+  
+}
+
 
 function _LookingGlass_lg_ajax_page () {
 
