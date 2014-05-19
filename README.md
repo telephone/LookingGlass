@@ -9,7 +9,7 @@ This fork is a simple Drupal module wrapper for this project.
 
 This is not to be confused with the Drupal Nagios Looking Glass Module. That is a completely unrelated project.
 
-To install download into /sites/all/modules/.  Enable in Drupal Modules.  Browse to http://mydomain.com/LookingGlass
+To install, cd to /sites/all/modules/ then git clone.  Enable in Drupal Modules.  Browse to http://mydomain.com/LookingGlass
 
 There are no bells and whistles like admin configurations and block functions.  Only the minimum modifications and hardcoded url required to get it to work as a Drupal module. Those other things should be easy to add if you want to do that.
 
