@@ -1,0 +1,9 @@
+name = Looking Glass
+description = User friendly PHP based looking glass that allows the public to execute network commands on your server.
+package = LookingGlass module
+core = 7.x
+files[] = LookingGlass/LookingGlass.php
+files[] = LookingGlass/RateLimit.php
+
+version = "7.x-1.x-dev"
+core = "7.x"
