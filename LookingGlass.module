@@ -71,7 +71,8 @@ function LookingGlass_menu() {
      'access callback' => TRUE,
   );
 
-  //The call to the ajax function made by Javascript
+  //Javascript will submit the variables it this link which invokes the lg_ajax_page function.
+  //On the Non-Drupal version this is ajax.php but you can't do it that way in Drupal.
   $items['lg_ajax'] = array(
     'title' => 'Ajax arguments',
     'description' => 'Javascript will submit commands to lg_ajax_page function',
