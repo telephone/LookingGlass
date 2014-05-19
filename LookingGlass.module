@@ -13,7 +13,7 @@
  *
 */
 
-function test7_theme() {
+function LookingGlass_theme() {
     return array(
     'my_LookingGlass' => array(
       'template' => 'LookingGlass',
@@ -28,17 +28,21 @@ function LookingGlass_menu() {
   // entry, so the page will be accessible from the URL
   // example.com/test7.
   $items['LookingGlass'] = array(
-      
      // The menu title.
      'title' => 'LookingGlass',
-
      // Description (hover flyover for menu link)
      'description' => 'Simple menu',
-     
      'page callback' => '_LookingGlass_menu_page',
-     
      'access callback' => TRUE,
- );
+  );
+
+  $items['/lg_ajax'] = array(
+    'title' => 'Ajax arguments',
+    'description' => 'Javascript submits commands to lg_ajax function',
+    'page callback' => '_LookingGlass_lg_ajax_page',
+    'page arguments' => array(t('This page demonstrates using arguments in the path (portions of the path after "test7/url_arguments". For example, access it with <a href="!link1">!link1</a> or <a href="!link2">!link2</a>).', array('!link1' => url('test7/use_url_arguments/ping/127.0.0.1'), '!link2' => url('test7/use_url_arguments/firstarg/secondarg')))),
+    'access callback' => TRUE,
+  );
 
 function _LookingGlass_ajax_page () {
 
