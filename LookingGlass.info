@@ -7,3 +7,5 @@ files[] = LookingGlass/RateLimit.php
 
 version = "7.x-1.x-dev"
 core = "7.x"
+project = "test"
+datestamp = "1396652050"

@@ -16,7 +16,8 @@
 * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-(function () {
+(function($) {
+//(function () {	
 
 	// Save reference to earlier defined object implementation (if any)
 	var oXMLHttpRequest = window.XMLHttpRequest;
@@ -522,4 +523,5 @@
 	// Register new object with window
 	window.XMLHttpRequest = cXMLHttpRequest;
 
-})();
+//})();
+})(jQuery);

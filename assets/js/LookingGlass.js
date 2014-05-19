@@ -1,7 +1,10 @@
 /**
  * LookingGlass jQuery file
  */
-$(document).ready(function() {
+(function($) {
+Drupal.behaviors.LookingGlass = {
+    attach: function() {
+//$(document).ready(function() {
   // onclick, set user IP to input value
   $('#userip').click(function () {
     $('#host').val($('#userip').text());
@@ -54,4 +57,5 @@ $(document).ready(function() {
     // cancel default behavior
     return false;
   });
-});
+}
+})(jQuery);

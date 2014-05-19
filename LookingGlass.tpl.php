@@ -1,7 +1,7 @@
 <?php
-if (!file_exists('LookingGlass/Config.php')) {
-  exit('Config.php does not exist. Please run configure.sh');
-}
+//if (!file_exists('LookingGlass/Config.php')) {
+//  exit('Config.php does not exist. Please run configure.sh');
+//}
 require 'LookingGlass/Config.php';
 ?>
 
@@ -35,8 +35,10 @@ require 'LookingGlass/Config.php';
         '._                _.'
            `""--......--""`
 -->
+<head>
 <!-- Styles -->
-<link href="assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
+<link href="LookingGlass/assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
+</head>
 
     <!-- Container -->
     <div class="container">
