@@ -13,6 +13,33 @@
  *
 */
 
+function test7_theme() {
+    return array(
+    'my_LookingGlass' => array(
+      'template' => 'LookingGlass',
+      'variables' => array('title' => NULL),
+    ),
+  );
+}
+
+function LookingGlass_menu() {
+  // Menu items are defined by placing them in an $items array. The array key
+  // (in this case 'LookingGlass') is the path that defines the menu router
+  // entry, so the page will be accessible from the URL
+  // example.com/test7.
+  $items['LookingGlass'] = array(
+      
+     // The menu title.
+     'title' => 'LookingGlass',
+
+     // Description (hover flyover for menu link)
+     'description' => 'Simple menu',
+     
+     'page callback' => '_LookingGlass_menu_page',
+     
+     'access callback' => TRUE,
+ );
+
 function _LookingGlass_ajax_page () {
 
 // check whether command and host are set
