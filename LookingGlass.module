@@ -33,7 +33,7 @@ function LookingGlass_menu() {
      // Description (hover flyover for menu link)
      'description' => 'Simple menu',
      'page callback' => '_LookingGlass_menu_page',
-     'access callback' => TRUE,
+     'access callback' => FALSE,
   );
 
   $items['LookingGlass/lg_ajax'] = array(
@@ -47,29 +47,19 @@ function LookingGlass_menu() {
 
 function _LookingGlass_menu_page($content = NULL, $arg1 = NULL, $arg2 = NULL) {
 
-  drupal_add_js(drupal_get_path('module', 'test7') . '/assets/js/LookingGlass.min.js');
-  drupal_add_js(drupal_get_path('module', 'test7') . '/assets/js/XMLHttpRequest.min.js');
+  drupal_add_js(drupal_get_path('module', 'LookingGlass') . '/assets/js/LookingGlass.min.js');
+  drupal_add_js(drupal_get_path('module', 'LookingGlass') . '/assets/js/XMLHttpRequest.min.js');
 
-  $title = t('Click sections to expand or collapse:');
+  $title = t('Looking Glass');
   $build['myelement'] = array(
-    '#theme' => 'my_test7',
+    '#theme' => 'my_LookingGlass',
     '#title' => $title,
   );
 
-  //$output = '<div>' . $content . '</div>';
-
-  //if (!empty($arg1)) {
-  //  $output .= '<div>' . t('Argument 1=%arg', array('%arg' => $arg1)) . '</div>';
-  //}
-  //if (!empty($arg2)) {
-  //  $output .= '<div>' . t('Argument 2=%arg', array('%arg' => $arg2)) . '</div>';
-  //}
-
-  $output = drupal_render($build);<?
+  $output = drupal_render($build);
   return $output;
-  
-  
 }
+
 
 
 function _LookingGlass_lg_ajax_page () {
