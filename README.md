@@ -16,7 +16,7 @@ This is not to be confused with the Drupal Nagios Looking Glass Module. That is 
 * Create the Config.php file by running /sites/all/modules/LookingGlass/LookingGlass/configure.sh
 * Browse to http://mydomain.com/LookingGlass
  
-There are no Drupal bells and whistles such as admin configuration and block functions.  Only the minimum modifications required to get it to work as a Drupal module. Those other things should be easy to add if you want to do that.
+Only the minimum modifications required to get it to work as a Drupal module were done. There are no Drupal bells and whistles such as admin configuration and block functions.  Those things should be easy to add if you want to do that.
 
 
 ## Demo of original Non-Drupal version
