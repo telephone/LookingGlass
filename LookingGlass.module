@@ -86,8 +86,6 @@ function _LookingGlass_menu_page($content = NULL, $arg1 = NULL, $arg2 = NULL) {
   //To change theme change the following css file.  
   //This differs from original LookingGlass which reads theme in html page
   drupal_add_css(drupal_get_path('module', 'LookingGlass') . '/assets/css/cerulean.css');
-
-  
   drupal_add_js(drupal_get_path('module', 'LookingGlass') . '/assets/js/LookingGlass.min.js');
   drupal_add_js(drupal_get_path('module', 'LookingGlass') . '/assets/js/XMLHttpRequest.min.js');
 
