@@ -1,0 +1,135 @@
+<?php
+
+
+/**
+ * Impliments hook_menu()
+ *
+*/
+
+/**
+ * MIT License
+ * ===========
+ *
+ * Copyright (c) 2012 Nick Adams <nick89@zoho.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @package     LookingGlass
+ * @author      Nick Adams <nick89@zoho.com>
+ * @copyright   2012 Nick Adams.
+ * @link        http://iamtelephone.com
+ * @version     1.2.0
+ * 
+ * Modfied by shadowym, May 2014
+ */
+
+/**
+ * @file
+ * Module file for LookingGlass
+ * 
+ * @see hook_menu
+ * 
+*/
+
+function LookingGlass_theme() {
+    return array(
+    'my_LookingGlass' => array(
+      'template' => 'LookingGlass',
+      'variables' => array('title' => NULL),
+    ),
+  );
+}
+
+function LookingGlass_menu() {
+  // Menu items are defined by placing them in an $items array. The array key
+  // (in this case 'LookingGlass') is the path that defines the menu router
+  // entry, so the page will be accessible from the URL
+  // example.com/test7.
+  $items['LookingGlass'] = array(
+     // The menu title.
+     'title' => 'LookingGlass',
+     // Description (hover flyover for menu link)
+     'description' => 'Simple menu',
+     'page callback' => '_LookingGlass_menu_page',
+     'access callback' => TRUE,
+  );
+
+  //Javascript will submit the variables it this link which invokes the lg_ajax_page function.
+  //On the Non-Drupal version this is ajax.php but you can't do it that way in Drupal.
+  $items['lg_ajax'] = array(
+    'title' => 'Ajax arguments',
+    'description' => 'Javascript will submit commands to lg_ajax_page function',
+    'page callback' => '_LookingGlass_lg_ajax_page',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+function _LookingGlass_menu_page($content = NULL, $arg1 = NULL, $arg2 = NULL) {
+  //To change theme change the following css file.  
+  //This differs from original LookingGlass which reads theme in html page
+  drupal_add_css(drupal_get_path('module', 'LookingGlass') . '/assets/css/cerulean.css');
+  drupal_add_js(drupal_get_path('module', 'LookingGlass') . '/assets/js/LookingGlass.min.js');
+  drupal_add_js(drupal_get_path('module', 'LookingGlass') . '/assets/js/XMLHttpRequest.min.js');
+
+  $title = t('Looking Glass');
+  $build['myelement'] = array(
+    '#theme' => 'my_LookingGlass',
+    '#title' => $title,
+  );
+
+  $output = drupal_render($build);
+  return $output;
+}
+
+
+
+function _LookingGlass_lg_ajax_page () {
+
+// check whether command and host are set
+    if (isset($_GET['cmd']) && isset($_GET['host'])) {
+        // define available commands
+        $cmds = array('host', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
+        // verify command
+        if (in_array($_GET['cmd'], $cmds)) {
+            // include required scripts
+            $required = array('LookingGlass.php', 'RateLimit.php', 'Config.php');
+            foreach ($required as $val) {
+                require 'LookingGlass/' . $val;
+            }
+
+            // instantiate LookingGlass & RateLimit
+            $lg = new Telephone\LookingGlass();
+            $limit = new Telephone\LookingGlass\RateLimit($rateLimit);
+
+            // check IP against database
+            $limit->rateLimit($rateLimit);
+
+            // execute command
+            $output = $lg->$_GET['cmd']($_GET['host']);
+            if ($output) {
+                exit();
+            }
+        }
+    }
+    
+// report error
+exit('Unauthorized request');
+}

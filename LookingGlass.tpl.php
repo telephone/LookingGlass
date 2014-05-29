@@ -1,11 +1,10 @@
 <?php
-if (!file_exists('LookingGlass/Config.php')) {
-  exit('Config.php does not exist. Please run configure.sh');
-}
+//if (!file_exists('LookingGlass/Config.php')) {
+//  exit('Config.php does not exist. Please run configure.sh');
+//}
 require 'LookingGlass/Config.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
 <!--
                  __ _
                .: .' '.
@@ -36,22 +35,6 @@ require 'LookingGlass/Config.php';
         '._                _.'
            `""--......--""`
 -->
-  <head>
-    <meta charset="utf-8">
-    <title><?php echo $siteName; ?> - Looking Glass</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LookingGlass - Open source PHP looking glass">
-    <meta name="author" content="Telephone">
-
-    <!-- IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Styles -->
-    <link href="assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
-  </head>
-  <body>
     <!-- Container -->
     <div class="container">
 
@@ -135,10 +118,3 @@ require 'LookingGlass/Config.php';
       </footer>
 
     </div><!-- /container -->
-
-    <!-- Javascript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <script src="assets/js/LookingGlass.min.js"></script>
-    <script src="assets/js/XMLHttpRequest.min.js"></script>
-  </body>
-</html>

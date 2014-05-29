@@ -1,7 +1,10 @@
 /**
  * LookingGlass jQuery file
  */
-$(document).ready(function() {
+(function($) {
+Drupal.behaviors.LookingGlass = {
+    attach: function() {
+//$(document).ready(function() {
   // onclick, set user IP to input value
   $('#userip').click(function () {
     $('#host').val($('#userip').text());
@@ -23,7 +26,7 @@ $(document).ready(function() {
 
       // call async request
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'ajax.php?' + data, true);
+      xhr.open('GET', 'lg_ajax?' + data, true);
       xhr.send(null);
       var timer;
       timer = window.setInterval(function() {
@@ -54,4 +57,5 @@ $(document).ready(function() {
     // cancel default behavior
     return false;
   });
-});
+}
+})(jQuery);

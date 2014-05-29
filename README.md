@@ -1,11 +1,25 @@
-# LookingGlass
+# Drupal LookingGlass Module
 
 ## Overview
 
 LookingGlass is a user-friendly PHP based looking glass that allows the public (via a web interface) to execute network 
 commands on behalf of your server.
 
-## Demo
+This fork is a simple Drupal module wrapper for this project.
+
+This is not to be confused with the Drupal Nagios Looking Glass Module. That is a completely unrelated project.
+
+## To install:
+* cd to /sites/all/modules/
+* git clone
+* Enable in Drupal Modules
+* Create the Config.php file by running /sites/all/modules/LookingGlass/LookingGlass/configure.sh
+* Browse to http://mydomain.com/LookingGlass
+ 
+Only the minimum modifications required to get it to work as a Drupal module were done. There are no Drupal bells and whistles such as admin configuration and block functions.  Those things should be easy to add if you want to do that.
+
+
+## Demo of original Non-Drupal version
 
 [LookingGlass](http://lg.iamtelephone.com)
 
@@ -39,32 +53,13 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 
 ## Install
 
-1. Download [LookingGlass](https://github.com/downloads/telephone/LookingGlass/LookingGlass-1.2.0.zip) to the intended 
-folder within your web directory (and unzip)
 2. Navigate to the `LookingGlass` subdirectory in terminal
 3. Run `bash configure.sh`
 4. Follow the instructions and `configure.sh` will take care of the rest
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
-## Nginx
 
-To enable output buffering on Nginx, please append the following to your PHP configuration:
-
-```nginx
-location ~ \.php$ {
-    ...
-
-    # Append the following
-    fastcgi_buffer_size   1k;
-    fastcgi_buffers       128 1k;
-    fastcgi_max_temp_file_size 0;
-    gzip off;
-}
-```
-
-I recommend that you create a separate host file for LookingGlass OR a directory specific PHP "location". This is due 
-to these settings not being optimal for conventional use.
 
 ## License
 
