@@ -1,3 +1,9 @@
+# Notice 2015-01-22
+
+An RDNS XSS was disclosed which has been patched by a temporary fix (thanks [@ldrrp](https://github.com/ldrrp)). To patch, simply replace `LookingGlass/LookingGlass.php` with the patched version found here: [LookingGlass.php](https://raw.githubusercontent.com/telephone/LookingGlass/a421a8e36d548c1bf33d52e123eea5a232dfa01f/LookingGlass/LookingGlass.php)
+
+A maintenance/security release will be issued before 2015-01-26, which will include a number of patches for v1.
+
 # LookingGlass
 
 ## Overview
