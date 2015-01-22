@@ -252,7 +252,7 @@ class LookingGlass
                         && ($traceCount - 1) === $lastFail
                         &&  $fail >= $failCount
                     ) {
-                        echo str_pad(htmlentities($str) . '<br />-- Traceroute timed out --<br />', 1024, ' ', STR_PAD_RIGHT);
+                        echo str_pad(htmlspecialchars($str) . '<br />-- Traceroute timed out --<br />', 1024, ' ', STR_PAD_RIGHT);
                         break;
                     }
                     $lastFail = $traceCount;
@@ -261,7 +261,7 @@ class LookingGlass
             }
 
             // pad string for live output
-            echo str_pad(htmlentities($str) . '<br />', 1024, ' ', STR_PAD_RIGHT);
+            echo str_pad(htmlspecialchars($str) . '<br />', 1024, ' ', STR_PAD_RIGHT);
 
             // flush output buffering
             @ob_flush();
