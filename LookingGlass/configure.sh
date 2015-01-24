@@ -73,11 +73,7 @@ function createConfig()
  * @author      Nick Adams <nick89@zoho.com>
  * @copyright   2012 Nick Adams.
  * @link        http://iamtelephone.com
-<<<<<<< HEAD
- * @version     1.1.0
-=======
  * @version     1.2.0
->>>>>>> dev
  */
 
 // IPv4 address
@@ -153,23 +149,29 @@ function config()
 function database()
 {
     if [ ! -f "${DIR}/ratelimit.db" ]; then
-      echo ''
+      echo
       echo 'Creating SQLite database...'
       sqlite3 ratelimit.db  'CREATE TABLE RateLimit (ip TEXT UNIQUE NOT NULL, hits INTEGER NOT NULL DEFAULT 0, accessed INTEGER NOT NULL);'
       sqlite3 ratelimit.db 'CREATE UNIQUE INDEX "RateLimit_ip" ON "RateLimit" ("ip");'
       read -e -p 'Enter the username of your webserver (E.g. www-data): ' USER
+      read -e -p 'Enter the user group of your webserver (E.g. www-data): ' GROUP
       # Change owner of folder & DB
       if [[ -n $USER ]]; then
-        chown $USER:$USER "${DIR}"
-        chown $USER:$USER ratelimit.db
+          if [[ -n $GROUP ]]; then
+            chown $USER:$GROUP "${DIR}"
+            chown $USER:$GROUP ratelimit.db
+          else
+            chown $USER:$USER "${DIR}"
+            chown $USER:$USER ratelimit.db
+          fi
       else
         cat <<EOF
 
 ##### IMPORTANT #####
 Please set the owner of LookingGlass (subdirectory) and ratelimit.db
-to that of your webserver.
-chown user:user LookingGlass
-chown user:user ratelimit.db
+to that of your webserver:
+chown user:group LookingGlass
+chown user:group ratelimit.db
 #####################
 EOF
       fi
@@ -193,7 +195,6 @@ function mtrFix()
 ##### IMPORTANT #####
 You are not root. Please log into root and run:
 chmod 4755 /usr/sbin/mtr
-and
 ln -s /usr/sbin/mtr /usr/bin/mtr
 #####################
 EOF
@@ -216,9 +217,20 @@ function requirements()
       INSTALL='apt-get'
     fi
   elif [ -f /usr/bin/yum ]; then
-    INSTALL='yum'
+    # Check for root
+    if [ $(id -u) != "0" ]; then
+      INSTALL='sudo yum'
+    else
+      INSTALL='yum'
+    fi
   else
-    echo 'Skipping script requirements.'
+    cat <<EOF
+
+##### IMPORTANT #####
+Unknown Operating system. Install dependencies manually:
+host mtr iputils-ping traceroute sqlite3
+#####################
+EOF
     return
   fi
 
@@ -236,14 +248,14 @@ function requirements()
         else
           ${INSTALL} -y install ${i}
         fi
-        echo ''
+        echo
       fi
     # Fix ping
     elif [ $i = 'iputils-ping' ]; then
       echo 'Checking for ping...'
       if [ ! -f "/bin/ping" ]; then
         ${INSTALL} -y install ${i}
-        echo ''
+        echo
       fi
     # Check both bin and sbin
     elif [ $i = 'traceroute' ]; then
@@ -251,14 +263,14 @@ function requirements()
       if [ ! -f "/usr/bin/$i" ]; then
         if [ ! -f "/usr/sbin/$i" ]; then
           ${INSTALL} -y install ${i}
-          echo ''
+          echo
         fi
       fi
     else
       echo "Checking for $i..."
       if [ ! -f "/usr/bin/$i" ]; then
         ${INSTALL} -y install ${i}
-        echo ''
+        echo
       fi
     fi
     sleep 1
@@ -273,11 +285,11 @@ function setup()
   sleep 1
 
   # Local vars
-  local IP4=''
-  local IP6=''
-  local LOC=''
-  local T=''
-  local S=''
+  local IP4=
+  local IP6=
+  local LOC=
+  local S=
+  local T=
   local U=
 
   # User input
@@ -436,7 +448,7 @@ cat <<EOF
 # for your network.
 #
 # Created by Nick Adams (telephone)
-# http://github.com/telephone
+# http://iamtelephone.com
 #
 ########################################
 
@@ -455,34 +467,34 @@ EOF
   sleep 1
 else
   echo 'Installation stopped :('
-  echo ''
+  echo
   exit
 fi
 
 # Global vars
 CONFIG='Config.php'
 DIR="$(cd "$(dirname "$0")" && pwd)"
-IPV4=''
-IPV6=''
-LOCATION=''
-RATELIMIT=''
-SITE=''
+IPV4=
+IPV6=
+LOCATION=
+RATELIMIT=
+SITE=
 URL=
 TEST=()
-THEME=''
+THEME=
 
 # Install required scripts
 echo 'Checking script requirements:'
 requirements
-echo ''
+echo
 # Read Config file
 echo 'Checking for previous config:'
 config
-echo ''
+echo
 # Create test files
-echo 'Creating sparse test files:'
+echo 'Creating test files:'
 testFiles
-echo ''
+echo
 # Follow setup
 cat <<EOF
 
@@ -493,10 +505,10 @@ cat <<EOF
 EOF
 echo 'Running setup:'
 setup
-echo ''
+echo
 # Theme
 defaultTheme
-echo ''
+echo
 # Create Config.php file
 echo 'Creating Config.php...'
 createConfig
