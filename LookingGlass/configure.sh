@@ -306,10 +306,10 @@ function setup()
   else
     RATELIMIT=0
   fi
-  # Create sparse files
+  # Create test files
   if [[ -n $T ]]; then
-    echo ''
-    echo 'Removing old sparse files:'
+    echo
+    echo 'Removing old test files:'
     # Delete old test files
     local REMOVE=($(ls ../*.test 2>/dev/null))
     for i in "${REMOVE[@]}"; do
@@ -320,8 +320,8 @@ function setup()
       fi
     done
     TEST=($T)
-    echo ''
-    echo 'Creating new sparse files:'
+    echo
+    echo 'Creating new test files:'
     # Create new test files
     testFiles
   fi
@@ -341,15 +341,15 @@ function testFiles()
   for i in "${TEST[@]}"; do
     if [[ -n i ]] && [ ! -f "../${i}.test" ]; then
       echo "Creating $i test file"
-      dd if=/dev/zero of="../${i}.test" bs=1 count=0 seek=${i} >/dev/null 2>&1
+      shred --exact --iterations=1 --size="${i}" - > "../${i}.test"
       A=$((A+1))
       sleep 1
     fi
   done
 
-  # No sparse files were created
+  # No test files were created
   if [ $A = 0 ]; then
-    echo 'Sparse files already exist...'
+    echo 'Test files already exist...'
   fi
 }
 
