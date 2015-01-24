@@ -137,7 +137,7 @@ require 'LookingGlass/Config.php';
     </div><!-- /container -->
 
     <!-- Javascript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.11.2.min.js"></script>
     <script src="assets/js/LookingGlass.min.js"></script>
     <script src="assets/js/XMLHttpRequest.min.js"></script>
   </body>
