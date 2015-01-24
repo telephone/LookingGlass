@@ -88,6 +88,8 @@ function createConfig()
 \$rateLimit = (int) '${RATELIMIT}';
 // Site name (header)
 \$siteName = '${SITE}';
+// Site URL
+\$siteUrl = '${URL}';
 // Server location
 \$serverLocation = '${LOCATION}';
 // Test files
@@ -134,6 +136,8 @@ function config()
         LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
       elif [ $f1 = '$siteName' ]; then
         SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+      elif [ $f1 = '$siteUrl' ]; then
+        URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
       elif [ $f1 = '$testFiles[]' ]; then
         TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
       elif [ $f1 = '$theme' ]; then
@@ -274,9 +278,11 @@ function setup()
   local LOC=''
   local T=''
   local S=''
+  local U=
 
   # User input
   read -e -p "Enter your website name (Header/Logo) [${SITE}]: " S
+  read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
   read -e -p "Enter the servers location [${LOCATION}]: " LOC
   read -e -p "Enter the test IPv4 address [${IPV4}]: " IP4
   read -e -p "Enter the test IPv6 address (Re-enter everytime this script is run) [${IPV6}]: " IP6
@@ -294,6 +300,9 @@ function setup()
   fi
   if [[ -n $S ]]; then
     SITE=$S
+  fi
+  if [[ -n $U ]]; then
+    URL=$U
   fi
   # Rate limit
   if [[ "$RATE" = 'y' ]] || [[ "$RATE" = 'yes' ]]; then
@@ -458,6 +467,7 @@ IPV6=''
 LOCATION=''
 RATELIMIT=''
 SITE=''
+URL=
 TEST=()
 THEME=''
 

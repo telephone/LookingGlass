@@ -59,7 +59,7 @@ require 'LookingGlass/Config.php';
       <header class="header nohighlight" id="overview">
         <div class="row">
           <div class="span12">
-            <h1><a id="title" href="<?php echo $_SERVER['REQUEST_URI']; ?>"><?php echo $siteName; ?></a></h1>
+            <h1><a id="title" href="<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
           </div>
         </div>
       </header>
