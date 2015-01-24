@@ -30,6 +30,13 @@
  * @link        http://iamtelephone.com
  * @version     1.2.0
  */
+
+/**
+ * NOTE:
+ *   Version 1 will continue to allow direct access to ajax.php (no CSRF protection).
+ *   I recommend setting a reasonable rate-limit to overcome abuse
+ */
+
 // check whether command and host are set
 if (isset($_GET['cmd']) && isset($_GET['host'])) {
     // define available commands
