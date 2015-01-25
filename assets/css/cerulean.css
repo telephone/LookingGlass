@@ -26,6 +26,7 @@ body {
   line-height: 1;
 }
 #title {
+  font-size: 36px;
   color: #317EAC;
   text-decoration: none;
 }

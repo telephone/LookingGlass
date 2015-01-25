@@ -27,6 +27,7 @@ body {
 }
 #title {
   color: #DD4814;
+  font-size: 36px;
   text-decoration: none;
 }
 #title:hover {
