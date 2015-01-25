@@ -49,6 +49,11 @@ if (isset($_GET['cmd']) && isset($_GET['host'])) {
             require 'LookingGlass/' . $val;
         }
 
+        // lazy check
+        if (!isset($rateLimit)) {
+            $rateLimit = 0;
+        }
+
         // instantiate LookingGlass & RateLimit
         $lg = new Telephone\LookingGlass();
         $limit = new Telephone\LookingGlass\RateLimit($rateLimit);

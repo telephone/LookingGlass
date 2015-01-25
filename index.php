@@ -1,8 +1,13 @@
 <?php
-if (!file_exists('LookingGlass/Config.php')) {
+// lazy config check/load
+if (file_exists('LookingGlass/Config.php')) {
+  require 'LookingGlass/Config.php';
+  if (!isset($ipv4, $ipv6, $siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
+    exit('Configuration variable/s missing. Please run configure.sh');
+  }
+} else {
   exit('Config.php does not exist. Please run configure.sh');
 }
-require 'LookingGlass/Config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
