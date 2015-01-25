@@ -270,6 +270,15 @@ class LookingGlass
             flush();
         }
 
+        // iterate stderr
+        while (($err = fgets($pipes[2], 1024)) != null) {
+            // check for IPv6 hostname passed to IPv4 command, and vice versa
+            if (strpos($err, 'Name or service not known') !== false || strpos($err, 'unknown host') !== false) {
+                echo 'Unauthorized request';
+                break;
+            }
+        }
+
         $status = proc_get_status($process);
         if ($status['running'] == true) {
             // close pipes that are still open
