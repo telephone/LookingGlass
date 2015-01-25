@@ -1,0 +1,8 @@
+# Disable directory indexing
+Options -Indexes
+
+# Deny access to database and config file/s
+RedirectMatch 404 \.(?:conf|db|sh)$
+
+# Disable gzip for test files
+SetEnvIf Request_URI \.test$ no-gzip dont-vary
