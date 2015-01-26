@@ -28,6 +28,7 @@ body {
   line-height: 1;
 }
 #title {
+  font-size: 36px;
   color: #282828;
   text-decoration: none;
 }
