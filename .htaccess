@@ -1,8 +1,9 @@
 # Disable directory indexing
 Options -Indexes
 
-# Deny access to database and config file/s
-RedirectMatch 404 \.(?:conf|db|sh)$
+# Deny access to LookingGlass subdirectory
+# Overkill, but used for development (dev folder = /LookingGlass)
+RedirectMatch 404 /LookingGlass/(.*\.(?:conf|db|sh)|(?:Config|LookingGlass|RateLimit)\.php)$
 
 # Disable gzip for test files
 SetEnvIf Request_URI \.test$ no-gzip dont-vary
