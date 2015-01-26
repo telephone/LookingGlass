@@ -53,24 +53,30 @@ folder within your web directory (and unzip)
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
+## Apache
+
+An .htaccess is included which protects the rate-limit database, disables indexes, and disables gzip on test files.
+Ensure `AllowOverride` is on for .htaccess to take effect.
+
+Output buffering __should__ work by default.
+
+For an HTTPS setup, please visit:
+- [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
+
 ## Nginx
 
-To enable output buffering on Nginx, please append the following to your PHP configuration:
+To enable output buffering, and disable gzip on test files please refer to the provided configuration:
 
-```nginx
-location ~ \.php$ {
-    ...
+[HTTP setup](LookingGlass/lookingglass-http.nginx.conf)
 
-    # Append the following
-    fastcgi_buffer_size   1k;
-    fastcgi_buffers       128 1k;
-    fastcgi_max_temp_file_size 0;
-    gzip off;
-}
-```
+The provided config is setup for LookingGlass to be on a subdomain/domain root.
 
-I recommend that you create a separate host file for LookingGlass OR a directory specific PHP "location". This is due 
-to these settings not being optimal for conventional use.
+For an HTTPS setup please visit:
+- [Best nginx configuration for security](http://tautt.com/best-nginx-configuration-for-security/)
+- [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
+
+
+
 
 ## License
 
