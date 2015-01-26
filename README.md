@@ -1,21 +1,19 @@
-# Notice 2015-01-22
-
-An RDNS XSS was disclosed which has been patched by a temporary fix (thanks [@ldrrp](https://github.com/ldrrp)). To patch, simply replace `LookingGlass/LookingGlass.php` with the patched version found here: [LookingGlass.php](https://raw.githubusercontent.com/telephone/LookingGlass/a421a8e36d548c1bf33d52e123eea5a232dfa01f/LookingGlass/LookingGlass.php)
-
-A maintenance/security release will be issued before 2015-01-26, which will include a number of patches for v1.
-
 # LookingGlass
 
 ## Overview
 
-LookingGlass is a user-friendly PHP based looking glass that allows the public (via a web interface) to execute network 
+LookingGlass is a user-friendly PHP based looking glass that allows the public (via a web interface) to execute network
 commands on behalf of your server.
+
+Current version: v1.3.0
+
+It's recommended that everyone updates their existing install!
 
 ## Demo
 
 [LookingGlass](http://lg.iamtelephone.com)
 
-The demo is hosted on a 50MB (RAM) VPS. 502 errors may occur in events of high use.
+Demo VPS sponsored by [KnightSwarm](https://knightswarm.com/)
 
 ## Features
 
@@ -40,16 +38,34 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 ## Requirements
 
 * PHP >= 5.3
-* PHP PDO
+* PHP PDO with SQLite driver (required for rate-limit)
 * SSH/Terminal access (able to install commands/functions if non-existent)
 
 ## Install
 
-1. Download [LookingGlass](https://github.com/downloads/telephone/LookingGlass/LookingGlass-1.2.0.zip) to the intended 
-folder within your web directory (and unzip)
-2. Navigate to the `LookingGlass` subdirectory in terminal
-3. Run `bash configure.sh`
-4. Follow the instructions and `configure.sh` will take care of the rest
+1. Download [LookingGlass](https://github.com/telephone/LookingGlass/archive/v1.3.0.tar.gz) to the intended
+folder within your web directory
+2. Extract archive:
+    - Option #1 - Extract archive to the current directory:
+        - `tar -zxvf LookingGlass-1.3.0.tar.gz --strip-components 1`
+    - Option #2 - Extract archive to a directory named `LookingGlass`:
+        - `tar -zxvf LookingGlass-1.3.0.tar.gz --transform 's!^[^/]\+\($\|/\)!LookingGlass\1!'`
+3. Navigate to the `LookingGlass` subdirectory in terminal
+4. Run `bash configure.sh`
+5. Follow the instructions and `configure.sh` will take care of the rest
+
+_Forgot a setting? Simply run the `configure.sh` script again_
+
+## Updating
+
+1. Download [LookingGlass](https://github.com/telephone/LookingGlass/archive/v1.3.0.tar.gz) to the folder containing
+your existing install
+2. Extract archive: `tar -zxvf LookingGlass-1.3.0.tar.gz --overwrite --strip-components 1`
+    - This will overwrite/update existing files
+3. Navigate to the `LookingGlass` subdirectory in terminal
+4. Run `bash configure.sh`
+5. Follow the instructions and `configure.sh` will take care of the rest
+    - Note: Re-enter test files to create random test files from `GNU shred`
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
@@ -75,8 +91,11 @@ For an HTTPS setup please visit:
 - [Best nginx configuration for security](http://tautt.com/best-nginx-configuration-for-security/)
 - [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
 
+## Sponsorship
 
+I'd like to thank [KnightSwarm](https://knightswarm.com/) for sponsoring my development and the demo VPS.
 
+![KnightSwarm](https://cloud.githubusercontent.com/assets/1809542/5891216/57a4b28e-a4ec-11e4-88be-55c580560111.png)
 
 ## License
 
