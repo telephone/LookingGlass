@@ -5,5 +5,8 @@ Options -Indexes
 # Overkill, but used for development (dev folder = /LookingGlass)
 RedirectMatch 404 /LookingGlass/(.*\.(?:conf|db|sh)|(?:Config|LookingGlass|RateLimit)\.php)$
 
+# Deny access to hidden files/folders
+RedirectMatch 404 /\.
+
 # Disable gzip for test files
 SetEnvIf Request_URI \.test$ no-gzip dont-vary
