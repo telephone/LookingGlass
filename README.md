@@ -91,12 +91,6 @@ For an HTTPS setup please visit:
 - [Best nginx configuration for security](http://tautt.com/best-nginx-configuration-for-security/)
 - [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
 
-## Sponsorship
-
-I'd like to thank [KnightSwarm](https://knightswarm.com/) for sponsoring my development and the demo VPS.
-
-![KnightSwarm](https://cloud.githubusercontent.com/assets/1809542/5891216/57a4b28e-a4ec-11e4-88be-55c580560111.png)
-
 ## License
 
 Code is licensed under MIT Public License.
