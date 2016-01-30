@@ -9,12 +9,6 @@ Current version: v1.3.0
 
 It's recommended that everyone updates their existing install!
 
-## Demo
-
-[LookingGlass](http://lg.iamtelephone.com)
-
-Demo VPS sponsored by [KnightSwarm](https://knightswarm.com/)
-
 ## Features
 
 * Automated install via bash script
@@ -90,12 +84,6 @@ The provided config is setup for LookingGlass to be on a subdomain/domain root.
 For an HTTPS setup please visit:
 - [Best nginx configuration for security](http://tautt.com/best-nginx-configuration-for-security/)
 - [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
-
-## Sponsorship
-
-I'd like to thank [KnightSwarm](https://knightswarm.com/) for sponsoring my development and the demo VPS.
-
-![KnightSwarm](https://cloud.githubusercontent.com/assets/1809542/5891216/57a4b28e-a4ec-11e4-88be-55c580560111.png)
 
 ## License
 
