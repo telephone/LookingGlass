@@ -55,6 +55,8 @@ if (file_exists('LookingGlass/Config.php')) {
 
     <!-- Styles -->
     <link href="assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
+   <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap.css" />
+   <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap-responsive.min.css" />
   </head>
   <body>
     <!-- Container -->
