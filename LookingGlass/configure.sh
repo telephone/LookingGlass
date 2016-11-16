@@ -186,14 +186,14 @@ function requirements()
 
 ##### IMPORTANT #####
 Unknown Operating system. Install dependencies manually:
-host mtr iputils-ping traceroute sqlite3
+host mtr iputils-ping traceroute sqlite3 php5-sqlite
 #####################
 EOF
     return
   fi
 
   # Array of required functions
-  local REQUIRE=(host mtr iputils-ping traceroute sqlite3)
+  local REQUIRE=(host mtr iputils-ping traceroute php5-sqlite sqlite3)
 
   # Loop through required & install
   for i in "${REQUIRE[@]}"; do
