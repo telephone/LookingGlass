@@ -16,6 +16,13 @@
  *   I recommend setting a reasonable rate-limit to overcome abuse
  */
 
+/*
+* Uncomment below to enable debug output
+* --------------------------------------
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'on');
+*/
+
 // check whether command and host are set
 if (isset($_GET['cmd']) && isset($_GET['host'])) {
     // define available commands
