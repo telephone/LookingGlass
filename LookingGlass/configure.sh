@@ -193,7 +193,7 @@ EOF
   fi
 
   # Array of required functions
-  local REQUIRE=(host mtr iputils-ping traceroute sqlite3)
+  local REQUIRE=(host mtr iputils-ping traceroute sqlite3 php.-sqlite)
 
   # Loop through required & install
   for i in "${REQUIRE[@]}"; do
