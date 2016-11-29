@@ -28,7 +28,7 @@ class LookingGlass
     public function host($host)
     {
         if ($host = $this->validate($host)) {
-            return $this->procExecute('host', $host);
+            return $this->procExecute('host %s', $host);
         }
         return false;
     }
@@ -46,7 +46,7 @@ class LookingGlass
     public function mtr($host)
     {
         if ($host = $this->validate($host)) {
-            return $this->procExecute('mtr -4 --report --report-wide', $host);
+            return $this->procExecute('mtr -4 --report --report-wide %s', $host);
         }
         return false;
     }
@@ -64,7 +64,7 @@ class LookingGlass
     public function mtr6($host)
     {
         if ($host = $this->validate($host, 6)) {
-            return $this->procExecute('mtr -6 --report --report-wide', $host);
+            return $this->procExecute('mtr -6 --report --report-wide %s', $host);
         }
         return false;
     }
@@ -84,7 +84,7 @@ class LookingGlass
     public function ping($host, $count = 4)
     {
         if ($host = $this->validate($host)) {
-            return $this->procExecute('ping -c' . $count . ' -w15', $host);
+            return $this->procExecute('ping -c'.(int)$count.' -w15 %s', $host);
         }
         return false;
     }
@@ -104,7 +104,7 @@ class LookingGlass
     public function ping6($host, $count = 4)
     {
         if ($host = $this->validate($host, 6)) {
-            return $this->procExecute('ping6 -c' . $count . ' -w15', $host);
+            return $this->procExecute('ping6 -c'.(int)$count.' -w15 %s', $host);
         }
         return false;
     }
@@ -124,7 +124,7 @@ class LookingGlass
     public function traceroute($host, $fail = 2)
     {
         if ($host = $this->validate($host)) {
-            return $this->procExecute('traceroute -4 -w2', $host, $fail);
+            return $this->procExecute('traceroute -4 -A -w2 %s', $host, $fail);
         }
         return false;
     }
@@ -144,7 +144,7 @@ class LookingGlass
     public function traceroute6($host, $fail = 2)
     {
         if ($host = $this->validate($host, 6)) {
-            return $this->procExecute('traceroute -6 -w2', $host, $fail);
+            return $this->procExecute('traceroute -6 -A -w2 %s', $host, $fail);
         }
         return false;
     }
@@ -181,7 +181,7 @@ class LookingGlass
         // sanitize + remove single quotes
         $host = str_replace('\'', '', filter_var($host, FILTER_SANITIZE_URL));
         // execute command
-        $process = proc_open("{$cmd} '{$host}'", $spec, $pipes, null);
+        $process = proc_open(sprintf($cmd, escapeshellarg($host)), $spec, $pipes, null);
 
         // check pipe exists
         if (!is_resource($process)) {
