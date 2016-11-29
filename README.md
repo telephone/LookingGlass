@@ -26,6 +26,8 @@ It's recommended that everyone updates their existing install!
 * ping6 (IPv6)
 * traceroute
 * traceroute6 (IPv6)
+* dig
+* whois
 
 __IPv6 commands will only work if your server has external IPv6 setup (or tunneled)__
 

@@ -193,7 +193,7 @@ EOF
   fi
 
   # Array of required functions
-  local REQUIRE=(host mtr iputils-ping traceroute sqlite3)
+  local REQUIRE=(host mtr iputils-ping traceroute sqlite3 jwhois)
 
   # Loop through required & install
   for i in "${REQUIRE[@]}"; do
@@ -214,6 +214,13 @@ EOF
       if [ ! -f "/bin/ping" ]; then
         ${INSTALL} -y install ${i}
         echo
+      fi
+     # Get whois
+    elif [ $i = 'jwhois' ]; then
+    echo 'Checking for whois...'
+      if [ ! -f "/bin/whois" ]; then
+        ${INSTALL} -y install ${i}
+        echo ''
       fi
     # Check both bin and sbin
     elif [ $i = 'traceroute' ]; then

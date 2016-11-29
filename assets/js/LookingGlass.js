@@ -10,7 +10,7 @@ $(document).ready(function() {
   $('#networktest').submit(function() {
     // define vars
     var host = $('input[name=host]').val();
-    var data = 'cmd=' + $('select[name=cmd]').val() + '&host=' + host;
+    var data = 'cmd=' + $('select[name=cmd]').val() + '&host=' + host + '&digparam='+ $('select[name=digparam]').val();
     // quick validation
     if (host == '') {
         $('#hosterror').addClass('error');

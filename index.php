@@ -55,6 +55,23 @@ if (file_exists('LookingGlass/Config.php')) {
 
     <!-- Styles -->
     <link href="assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
+  <script type="text/javascript">
+function showhide(f)
+{
+opt=f.cmd.value;
+if (opt=='dig')
+        {
+        targ=document.getElementById('digparam');
+        targ.style.visibility='visible';
+        }
+else
+        {
+        targ=document.getElementById('digparam');
+        targ.style.visibility='hidden';
+        }
+}
+
+</script>
   </head>
   <body>
     <!-- Container -->
@@ -103,7 +120,7 @@ if (file_exists('LookingGlass/Config.php')) {
                     <input id="host" name="host" type="text" class="input-large" placeholder="Host or IP address">
                   </div>
                 </div>
-                <select name="cmd" class="input-medium" style="margin-left: 5px;">
+                <select name="cmd" class="input-medium" onchange="showhide(this.form);" style="margin-left: 5px;">
                   <option value="host">host</option>
                   <option value="mtr">mtr</option>
                   <?php if (!empty($ipv6)) { echo '<option value="mtr6">mtr6</option>'; } ?>
@@ -111,7 +128,19 @@ if (file_exists('LookingGlass/Config.php')) {
                   <?php if (!empty($ipv6)) { echo '<option value="ping6">ping6</option>'; } ?>
                   <option value="traceroute">traceroute</option>
                   <?php if (!empty($ipv6)) { echo '<option value="traceroute6">traceroute6</option>'; } ?>
+                  <option value="whois">whois</option>
+                  <option value="dig">dig</option>
                 </select>
+                <select name="digparam" id="digparam" style="visibility:hidden;" class="input-medium"  style="margin-left: 5px;">
+<option value="A">A</option>
+<option value="ANY">ANY</option>
+<option value="MX">MX</option>
+<option value="NS">NS</option>
+<option value="SOA">SOA</option>
+<option value="HINFO">hinfo</option>
+<option value="AXFR">axfr</option>
+<option value="TXT">TXT</option>
+</select>
                 <button type="submit" id="submit" name="submit" class="btn btn-primary" style="margin-left: 10px;">Run Test</button>
               </fieldset>
             </form>
@@ -145,5 +174,11 @@ if (file_exists('LookingGlass/Config.php')) {
     <script src="assets/js/jquery-1.11.2.min.js"></script>
     <script src="assets/js/LookingGlass.min.js"></script>
     <script src="assets/js/XMLHttpRequest.min.js"></script>
+    <script src="assets/js/jquery.watermarkinput.js"></script>
   </body>
+<script>
+jQuery(function($){
+   $("#host").Watermark("Host or IP address");
+});
+</script>
 </html>
